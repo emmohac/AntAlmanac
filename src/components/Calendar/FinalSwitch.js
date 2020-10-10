@@ -1,9 +1,8 @@
-import React from 'react';
-import {Switch, Typography} from '@material-ui/core';
+import React, { Fragment } from 'react';
+import { Switch } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 class FinalSwitch extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -11,14 +10,14 @@ class FinalSwitch extends React.Component {
       showFinal: true,
     };
   }
-  handleChange = name => event => {
+  handleChange = (name) => (event) => {
     this.setState({ [name]: event.target.checked });
     this.props.displayFinal(this.props.schedule);
   };
 
   render() {
     return (
-      <Typography >
+      <Fragment>
         <FormControlLabel
           control={
             <Switch
@@ -26,12 +25,12 @@ class FinalSwitch extends React.Component {
               onChange={this.handleChange('showFinal')}
               value="showFinal"
               color="primary"
-              style={{margin: 0}}
+              size="small"
             />
           }
-          label="FINALS"
+          label={this.props.isDesktop ? 'FINALS' : 'Fn'}
         />
-      </Typography>
+      </Fragment>
     );
   }
 }
